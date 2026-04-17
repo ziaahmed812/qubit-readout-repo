@@ -1,15 +1,15 @@
 # Supplementary Media
 
-This repository includes two MP4 animations as supplementary reviewer material. They are not embedded in the thesis figures, but they provide a compact visual summary of the cavity-field dynamics in the dispersive and full Jaynes-Cummings models.
+This repository includes two MP4 animations that are not part of the thesis figure set, but are useful for inspecting the same readout physics in a more direct visual form.
 
 ## Included Files
 
-| Asset | Output path | Generator | Summary |
+| Asset | Output file | Generator | What it shows |
 | --- | --- | --- | --- |
 | Supplementary Animation 1 | `media/animations/dispersive_evolution.mp4` | `scripts/animations/make_animations.py` | cavity-field evolution in the dispersive model |
 | Supplementary Animation 2 | `media/animations/full_jc_evolution.mp4` | `scripts/animations/make_animations.py` | cavity-field evolution in the full Jaynes-Cummings model |
 
-## How To Regenerate
+## How To Regenerate Them
 
 From the repository root:
 
@@ -17,18 +17,18 @@ From the repository root:
 python scripts/animations/make_animations.py
 ```
 
-This writes:
+This produces:
 
 - `media/animations/dispersive_evolution.mp4`
 - `media/animations/full_jc_evolution.mp4`
 
-The script uses `matplotlib.animation` together with `ffmpeg`, so a working `ffmpeg` installation is required.
+The script uses `matplotlib.animation` together with `ffmpeg`, so `ffmpeg` needs to be available locally.
 
-## Review Context
+## How To Read Them
 
-These animations should be read as supplementary visualizations of the same readout physics discussed in Chapter 3:
+These animations should be read as supplementary visualizations of the same readout dynamics discussed in Chapter 3:
 
-- the dispersive animation provides a reference evolution in the simpler regime
-- the full Jaynes-Cummings animation highlights the stronger non-dispersive deformation of the cavity-field dynamics
+- the dispersive animation gives the simpler reference picture
+- the full Jaynes-Cummings animation shows the stronger deformation and non-dispersive behavior
 
-They are included to make the readout dynamics easier to inspect during external review, not as a substitute for the thesis figures.
+They are included to help a reviewer see the dynamics more directly, not to replace the thesis figures.

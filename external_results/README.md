@@ -1,10 +1,16 @@
-# External Results Placeholder
+# External Sweep Outputs
 
-This directory is intentionally empty in the submission repository.
+This directory is intentionally empty in the public review repository.
 
-It is reserved for heavy sweep outputs that are **not bundled here**, but that would be needed for a full rerun of the optimization figures.
+The optimization figures in the thesis come from larger parameter sweeps. This repository includes:
 
-Expected subdirectories:
+- the final thesis figures
+- the original sweep scripts
+- the scripts that turn sweep outputs into figures
+
+What it does **not** include is the bulky saved output of those sweeps.
+
+If those figures ever need to be rerun in full, regenerated sweep outputs should be placed here using the following layout:
 
 - `g_delta_grid/results/`
 - `kappa_epsilon/results/`
@@ -12,4 +18,4 @@ Expected subdirectories:
 - `gamma_sweep/results/`
 - `delta_phi/results/`
 
-The repository preserves the scientific sweep drivers and the corresponding artifact-generation scripts, but not the large archived output grids themselves.
+So this directory is simply a placeholder for those external sweep results. The workflow is preserved in the repository, but the heavy saved outputs themselves are not bundled here.

@@ -1,32 +1,61 @@
 # Reproducibility Guide
 
-This repository supports external review of the readout results in the accompanying thesis PDF. It therefore distinguishes carefully between:
+This guide explains how much of the thesis material can be rerun directly from this repository, and where the limits are. The repository is meant for reviewer inspection and technical transparency, not as a full archival dump of every heavy parameter sweep.
 
-- results that can be regenerated directly from the code included here
-- results that can be regenerated here from included compact data files
-- results for which the repository preserves the original computational workflow and final artifact, but not the full heavy sweep outputs
+## Three Reproducibility Levels
+
+The material in this repository falls into three groups.
+
+### 1. Directly reproducible here
+
+These figures and media can be regenerated directly from the scripts in the repository:
+
+- Figures 3.1a-3.2b
+- Figures 3.11-3.12
+- Figure B.1
+- the two supplementary animations
+
+### 2. Reproducible from included data
+
+These figures can be regenerated because the required compact validation datasets are included under `data/selected/validation/`:
+
+- Figures 3.3a-3.5
+
+### 3. Workflow preserved; full rerun needs regenerated sweep outputs
+
+For these figures, the repository includes:
+
+- the final thesis figure
+- the original sweep script
+- the script that turns sweep outputs into the final figure
+
+What it does **not** include is the full saved output of the large sweeps themselves:
+
+- Figures 3.6a-3.10
+
+That omission is deliberate. The goal here is to make the workflow inspectable and understandable without shipping bulky sweep archives that are not needed for review.
 
 ## Recorded Thesis Compute Stack
 
-The larger QuTiP runs used in the thesis were recorded on a CPU-only compute environment with:
+The larger QuTiP runs used in the thesis were recorded on a CPU-only environment with:
 
-- **Python**: 3.12
-- **QuTiP**: 5.2.2
-- **NumPy**: 2.3.x
-- **SciPy**: 1.16.x
+- **Python** 3.12
+- **QuTiP** 5.2.2
+- **NumPy** 2.3.x
+- **SciPy** 1.16.x
 - **Matplotlib**
 - **tqdm**
 
 Additional system dependencies:
 
-- a LaTeX distribution, because many scripts use `matplotlib` with `text.usetex=True`
+- a LaTeX distribution, because several scripts use `matplotlib` with `text.usetex=True`
 - `ffmpeg`, for the MP4 animations
 
-This is the **recorded thesis compute stack**, not a fully revalidated end-to-end environment guarantee for every preserved heavy-sweep path in this submission repository.
+This is the recorded thesis compute stack, not a promise that every preserved heavy-sweep path has been fully revalidated end-to-end inside this review repository.
 
 ## Suggested Local Environment
 
-The following is a best-effort reconstruction of the recorded thesis stack:
+The following is a reasonable reconstruction of the recorded thesis environment:
 
 ```bash
 python3.12 -m venv .venv
@@ -35,40 +64,9 @@ python -m pip install --upgrade pip
 python -m pip install "qutip==5.2.2" "numpy>=2.3,<2.4" "scipy>=1.16,<1.17" matplotlib tqdm
 ```
 
-If `python3.12` is not available locally, another recent Python 3 version may still be adequate for code inspection and some smaller reruns, but the configuration above is the closest documented match to the thesis compute environment.
+If `python3.12` is not available locally, another recent Python 3 version may still be adequate for code inspection and smaller reruns, but the configuration above is the closest documented match.
 
-## Reproducibility Classes
-
-### 1. Directly reproducible here
-
-These figures and media can be regenerated directly from the scripts included in this repository:
-
-- Figures 3.1a-3.2b
-- Figures 3.11-3.12
-- Figure B.1
-- the two supplementary animations
-
-### 2. Reproducible here from included selected data
-
-These figures can be regenerated here because the required compact validation data files are included in `data/selected/validation/`:
-
-- Figures 3.3a-3.5
-
-### 3. Provenance-preserved; full rerun requires regenerating omitted sweep outputs
-
-These figures are represented here by:
-
-- the final thesis artifact
-- the original scientific sweep driver
-- the postprocess script that turns sweep outputs into the final artifact
-
-but **not** by the large archived sweep outputs themselves:
-
-- Figures 3.6a-3.10
-
-This is a deliberate design choice for the submission repository. The heavy output bundles are not required for reviewers to inspect the methodology or the final thesis artifacts, but a complete rerun of those figures would require regenerating the omitted sweep results externally.
-
-## Directly Reproducible Figures
+## Figures You Can Regenerate Directly
 
 Run the following from the repository root.
 
@@ -120,9 +118,9 @@ Expected outputs:
 - `media/animations/dispersive_evolution.mp4`
 - `media/animations/full_jc_evolution.mp4`
 
-## Selected-Data Validation Figures
+## Validation Figures Reproduced From Included Data
 
-These scripts use compact included data files rather than omitted sweep bundles.
+These scripts regenerate the thesis validation figures from compact data files that are included in the repository:
 
 ```bash
 python scripts/validation/postprocess/regen_dispersive_H_SNR.py
@@ -138,11 +136,11 @@ Expected outputs:
 - `figures/chapter3/JC_H_BEYOND-dispersive-with-gamma_g0.20_SNR.pdf`
 - `figures/chapter3/fidelity_JC_BEYOND_dispersive_g0.20.png`
 
-These figures correspond to the validation parameter sets summarized in **Tables 3.1 and 3.2** of the accompanying thesis PDF.
+These correspond to the validation parameter sets summarized in **Tables 3.1 and 3.2** of the accompanying thesis PDF.
 
-## Heavy Sweep Figures
+## Larger Optimization Figures
 
-The following thesis figures depend on larger parameter sweeps:
+The following figures depend on larger parameter sweeps:
 
 - Figures 3.6a-3.7b: `scripts/sweeps/g_delta/g_delta_sweep.py`
 - Figure 3.8a: `scripts/sweeps/kappa_epsilon/kappa_epsilon_sweep.py`
@@ -150,23 +148,23 @@ The following thesis figures depend on larger parameter sweeps:
 - Figure 3.9: `scripts/sweeps/gamma/gamma_sweep.py`
 - Figure 3.10: `scripts/sweeps/delta_phi/noise_sweep.py`
 
-The corresponding artifact-generation scripts are preserved in:
+The corresponding figure-generation scripts are preserved in:
 
 - `scripts/postprocess/optimization/`
 
-If a full rerun of these figures is desired, the omitted sweep outputs should be regenerated and placed under:
+If these figures need to be rerun in full, regenerated sweep outputs should be placed under:
 
 - `external_results/`
 
-The expected directory structure is documented in `external_results/README.md`.
+The expected directory layout is documented in [../external_results/README.md](../external_results/README.md).
 
-## Compute Notes For Heavy Sweeps
+## Notes On The Heavier Runs
 
-The recorded thesis runner notes for the larger scans describe a CPU-only environment with:
+The recorded thesis runner notes for the larger scans describe a CPU-only setup with:
 
 - 4 CPU cores
 - 15 GiB RAM
 - Python 3.12
 - QuTiP 5.2.2
 
-That information is mainly relevant to the heavy sweep drivers rather than the smaller self-contained figure scripts.
+That information matters mainly for the larger sweep scripts rather than the smaller self-contained figure scripts.
