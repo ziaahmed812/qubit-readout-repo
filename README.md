@@ -27,6 +27,30 @@ What is missing at the moment is not the core physics, but the packaging and pub
 
 So this repository is evidence of the work that already exists, while the grant is meant to fund the step from thesis-era research code to a public tool other researchers can use.
 
+## Project Status Overview
+
+The figure below is meant to separate the work that already exists from the work the grant would fund and the public outputs that would follow from it.
+
+```mermaid
+flowchart LR
+    A[Existing validated foundation] --> B[Work to be completed during the grant]
+    B --> C[Public outputs]
+
+    A --> A1[Validated SNR framework]
+    A --> A2[Benchmark and convergence results]
+    A --> A3[Core thesis figures and animations]
+
+    B --> B1[Package cleanup and structure]
+    B --> B2[Documentation and worked examples]
+    B --> B3[Higher-drive displaced-frame extension]
+
+    C --> C1[Open-source package]
+    C --> C2[Documentation site]
+    C --> C3[Open-access paper]
+```
+
+This repository mainly documents the first stage. The proposed grant is intended to fund the second stage and enable the third.
+
 ## Scientific Focus
 
 The scientific focus of the repository is realistic cavity-assisted qubit readout beyond simple dispersive approximations. In particular, it documents:
@@ -50,7 +74,7 @@ The parameter sets used for the validation figures are listed in **Tables 3.1 an
 
 For the exact thesis-numbered mapping from repository files to thesis figures, see [docs/thesis-figure-map.md](docs/thesis-figure-map.md).
 
-## Workflow Overview
+## Technical Workflow Behind The Repository
 
 ```mermaid
 flowchart LR
