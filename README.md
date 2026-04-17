@@ -32,23 +32,23 @@ So this repository is evidence of the work that already exists, while the grant 
 The figure below is meant to separate the work that already exists from the work the grant would fund and the public outputs that would follow from it.
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph A["Existing validated foundation"]
-        direction TB
+        direction LR
         A1[Validated SNR framework]
         A2[Benchmark and convergence results]
         A3[Core thesis figures and animations]
     end
 
     subgraph B["Work to be completed during the grant"]
-        direction TB
+        direction LR
         B1[Package cleanup and structure]
         B2[Documentation and worked examples]
         B3[Higher-drive displaced-frame extension]
     end
 
     subgraph C["Public outputs"]
-        direction TB
+        direction LR
         C1[Open-source package]
         C2[Documentation site]
         C3[Open-access paper]
