@@ -33,20 +33,28 @@ The figure below is meant to separate the work that already exists from the work
 
 ```mermaid
 flowchart LR
-    A[Existing validated foundation] --> B[Work to be completed during the grant]
-    B --> C[Public outputs]
+    subgraph A["Existing validated foundation"]
+        direction TB
+        A1[Validated SNR framework]
+        A2[Benchmark and convergence results]
+        A3[Core thesis figures and animations]
+    end
 
-    A --> A1[Validated SNR framework]
-    A --> A2[Benchmark and convergence results]
-    A --> A3[Core thesis figures and animations]
+    subgraph B["Work to be completed during the grant"]
+        direction TB
+        B1[Package cleanup and structure]
+        B2[Documentation and worked examples]
+        B3[Higher-drive displaced-frame extension]
+    end
 
-    B --> B1[Package cleanup and structure]
-    B --> B2[Documentation and worked examples]
-    B --> B3[Higher-drive displaced-frame extension]
+    subgraph C["Public outputs"]
+        direction TB
+        C1[Open-source package]
+        C2[Documentation site]
+        C3[Open-access paper]
+    end
 
-    C --> C1[Open-source package]
-    C --> C2[Documentation site]
-    C --> C3[Open-access paper]
+    A --> B --> C
 ```
 
 This repository mainly documents the first stage. The proposed grant is intended to fund the second stage and enable the third.
