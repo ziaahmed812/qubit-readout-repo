@@ -38,6 +38,8 @@ flowchart TB
         A1[Validated SNR framework]
         A2[Benchmark and convergence results]
         A3[Core thesis figures and animations]
+        A1 ~~~ A2
+        A2 ~~~ A3
     end
 
     subgraph B["Work to be completed during the grant"]
@@ -45,6 +47,8 @@ flowchart TB
         B1[Package cleanup and structure]
         B2[Documentation and worked examples]
         B3[Higher-drive displaced-frame extension]
+        B1 ~~~ B2
+        B2 ~~~ B3
     end
 
     subgraph C["Public outputs"]
@@ -52,6 +56,8 @@ flowchart TB
         C1[Open-source package]
         C2[Documentation site]
         C3[Open-access paper]
+        C1 ~~~ C2
+        C2 ~~~ C3
     end
 
     A --> B --> C
